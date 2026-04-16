@@ -71,6 +71,6 @@ export default [
   {
     path: '**',
     canActivate: [notFoundRedirectGuard],
-    component: RedirectComponent, // opcional: puedes usar un componente vacío si lo requiere el router
+    component: RedirectComponent,
   },
 ] as Routes;

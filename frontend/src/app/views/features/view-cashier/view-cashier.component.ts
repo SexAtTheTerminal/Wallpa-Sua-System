@@ -1,24 +1,24 @@
 import { Component, inject } from '@angular/core';
-import { SidebarAdminComponent } from '../../../sidebar/features/sidebar-admin/sidebar-admin.component';
+import { SidebarCasherComponent } from '../../../sidebar/features/sidebar-casher/sidebar-casher.component';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../auth/data-access/auth.service';
 import { SupabaseService } from '../../../shared/data-access/supabase.service';
 
 @Component({
-  selector: 'app-view-admin',
+  selector: 'app-view-cashier',
   standalone: true,
-  imports: [SidebarAdminComponent, CommonModule, RouterLink],
-  templateUrl: './view-admin.component.html',
-  styleUrl: './view-admin.component.scss',
+  imports: [SidebarCasherComponent, CommonModule, RouterLink],
+  templateUrl: './view-cashier.component.html',
+  styleUrl: './view-cashier.component.scss',
 })
-export class ViewAdminComponent {
+export class ViewCashierComponent {
   sidebarCollapsed = false;
   userData: any;
 
   private readonly authService = inject(AuthService);
   private readonly supabase = inject(SupabaseService);
-  private readonly router = inject(Router)
+  private readonly router = inject(Router);
 
   async ngOnInit() {
     this.authService.verifyRoleOrSignOut().then((isValid) => {
@@ -37,7 +37,6 @@ export class ViewAdminComponent {
       } = await this.supabase.supabaseClient.auth.getSession();
 
       if (session?.user?.id) {
-        // Usar el nuevo método para obtener los datos del usuario
         this.userData = await this.authService.getUserProfile(session.user.id);
       }
     } catch (error) {

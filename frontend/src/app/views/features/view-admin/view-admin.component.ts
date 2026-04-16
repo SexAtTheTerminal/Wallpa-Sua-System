@@ -1,23 +1,24 @@
 import { Component, inject } from '@angular/core';
-import { SidebarCookerComponent } from '../../../sidebar/features/sidebar-cooker/sidebar-cooker.component';
+import { SidebarAdminComponent } from '../../../sidebar/features/sidebar-admin/sidebar-admin.component';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../auth/data-access/auth.service';
 import { SupabaseService } from '../../../shared/data-access/supabase.service';
 
 @Component({
-  selector: 'app-view-cooker',
-  imports: [SidebarCookerComponent, CommonModule, RouterLink],
-  templateUrl: './view-cooker.component.html',
-  styleUrl: './view-cooker.component.scss',
+  selector: 'app-view-admin',
+  standalone: true,
+  imports: [SidebarAdminComponent, CommonModule, RouterLink],
+  templateUrl: './view-admin.component.html',
+  styleUrl: './view-admin.component.scss',
 })
-export class ViewCookerComponent {
+export class ViewAdminComponent {
   sidebarCollapsed = false;
   userData: any;
 
   private readonly authService = inject(AuthService);
   private readonly supabase = inject(SupabaseService);
-  private readonly router = inject(Router);
+  private readonly router = inject(Router)
 
   async ngOnInit() {
     this.authService.verifyRoleOrSignOut().then((isValid) => {
@@ -36,7 +37,6 @@ export class ViewCookerComponent {
       } = await this.supabase.supabaseClient.auth.getSession();
 
       if (session?.user?.id) {
-        // Usar el nuevo método para obtener los datos del usuario
         this.userData = await this.authService.getUserProfile(session.user.id);
       }
     } catch (error) {

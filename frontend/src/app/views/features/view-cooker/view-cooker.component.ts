@@ -1,18 +1,17 @@
 import { Component, inject } from '@angular/core';
-import { SidebarCasherComponent } from '../../../sidebar/features/sidebar-casher/sidebar-casher.component';
+import { SidebarCookerComponent } from '../../../sidebar/features/sidebar-cooker/sidebar-cooker.component';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../auth/data-access/auth.service';
 import { SupabaseService } from '../../../shared/data-access/supabase.service';
 
 @Component({
-  selector: 'app-view-cashier',
-  standalone: true,
-  imports: [SidebarCasherComponent, CommonModule, RouterLink],
-  templateUrl: './view-cashier.component.html',
-  styleUrl: './view-cashier.component.scss',
+  selector: 'app-view-cooker',
+  imports: [SidebarCookerComponent, CommonModule, RouterLink],
+  templateUrl: './view-cooker.component.html',
+  styleUrl: './view-cooker.component.scss',
 })
-export class ViewCashierComponent {
+export class ViewCookerComponent {
   sidebarCollapsed = false;
   userData: any;
 
@@ -37,7 +36,6 @@ export class ViewCashierComponent {
       } = await this.supabase.supabaseClient.auth.getSession();
 
       if (session?.user?.id) {
-        // Usar el nuevo método para obtener los datos del usuario
         this.userData = await this.authService.getUserProfile(session.user.id);
       }
     } catch (error) {
