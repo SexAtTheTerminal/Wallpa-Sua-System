@@ -16,56 +16,57 @@ import { RecordComponent } from '../../../modules/comprobantes/record/record.com
 export default [
   {
     path: 'cashier',
-    canActivate: [roleGuard(['Cajero'])],
+    canActivate: [roleGuard(['cashier'])],
     component: ViewCashierComponent,
   },
   {
     path: 'cashier/pagos/registrar-cobro',
-    canActivate: [roleGuard(['Cajero'])],
+    canActivate: [roleGuard(['cashier'])],
     component: RegistrarCobroComponent,
   },
   {
     path: 'cashier/pedidos/consultar-pedidos',
-    canActivate: [roleGuard(['Cajero'])],
+    canActivate: [roleGuard(['cashier'])],
     component: ConsultarPedidosComponent,
   },
   {
     path: 'cashier/pedidos/registrar-pedidos',
-    canActivate: [roleGuard(['Cajero'])],
+    canActivate: [roleGuard(['cashier'])],
     component: RegistrarPedidosComponent,
   },
   {
     path: 'cooker',
-    canActivate: [roleGuard(['Cocinero'])],
+    canActivate: [roleGuard(['cooker'])],
     component: ViewCookerComponent,
   },
   {
     path: 'cooker/pedidos/consultar-pedidos',
-    canActivate: [roleGuard(['Cocinero'])],
+    canActivate: [roleGuard(['cooker'])],
     component: ConsultarPedidosComponent,
   },
   {
     path: 'cooker/pedidos/update-pedidos',
-    canActivate: [roleGuard(['Cocinero'])],
+    canActivate: [roleGuard(['cooker'])],
     component: UpdatePedidosComponent,
   },
   {
     path: 'admin',
-    canActivate: [roleGuard(['Administrador'])],
+    canActivate: [roleGuard(['admin'])],
     component: ViewAdminComponent,
   },
   {
     path: 'admin/details',
-    canActivate: [roleGuard(['Administrador'])],
+    canActivate: [roleGuard(['admin'])],
     component: DetailsComponent,
   },
   {
     path: 'admin/receipts',
-    canActivate: [roleGuard(['Administrador'])],
+    canActivate: [roleGuard(['admin'])],
     component: ReceiptsComponent,
   },
   {
     path: 'admin/record',
+    canActivate: [roleGuard(['admin'])],
     component: RecordComponent,
   },
   {

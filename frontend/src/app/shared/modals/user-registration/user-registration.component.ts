@@ -58,23 +58,17 @@ export class UserRegistrationComponent implements OnInit {
   }
 
 cargarDatosParaEdicion() {
-  const nombreCompleto = this.usuarioParaEditar['Nombre y Apellido'].split(' ');
-  
+  // Backend returns: { id, nombre, apellido, email, rolId, rol, activo, fechaRegistro }
+  const apellidos = (this.usuarioParaEditar.apellido || '').split(' ');
+
   this.usuarioData = {
-    idUsuario: this.usuarioParaEditar.idUsuario,
-    idEmpleado: this.usuarioParaEditar.idEmpleado,
-    idAuth: this.usuarioParaEditar.idAuth,
-    nombre: nombreCompleto[0],
-    apellidoPaterno: nombreCompleto[1],
-    apellidoMaterno: nombreCompleto[2] || '',
-    dni: this.usuarioParaEditar.DNI,
-    telefono: this.usuarioParaEditar.telefono,
-    fechaNacimiento: this.usuarioParaEditar.fechaNacimiento,
-    email: this.usuarioParaEditar['Correo Electrónico'],
-    oldEmail: this.usuarioParaEditar['Correo Electrónico'],
-    idCargo: this.usuarioParaEditar.idCargo,
-    idRol: this.usuarioParaEditar.idRol, // Asegúrate que esto se está cargando
-    estado: this.usuarioParaEditar.estado
+    idUsuario: this.usuarioParaEditar.id,
+    nombre: this.usuarioParaEditar.nombre,
+    apellidoPaterno: apellidos[0] || '',
+    apellidoMaterno: apellidos.slice(1).join(' ') || '',
+    email: this.usuarioParaEditar.email,
+    idRol: this.usuarioParaEditar.rolId,
+    estado: this.usuarioParaEditar.activo
   };
 }
   onSubmit() {

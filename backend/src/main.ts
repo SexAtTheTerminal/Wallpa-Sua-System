@@ -16,6 +16,7 @@ async function bootstrap() {
 
   // Global API prefix
   app.setGlobalPrefix('api');
+  app.enableCors(); 
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
