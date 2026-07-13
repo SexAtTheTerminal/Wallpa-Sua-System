@@ -21,17 +21,8 @@ export class FiltrosUsuariosComponent {
   @Output() crearUsuario = new EventEmitter<void>();
 
   estados: string[] = [
-    'DNI',
     'Nombre y Apellidos',
     'Correo Electrónico'
-  ];
-
-  cargos: string[] = [
-    'Administrador',
-    'Mesero',
-    'Cajero',
-    'Cocinero',
-    'Gerente'
   ];
 
   emitirBusquedaCodigo(event: Event) {
